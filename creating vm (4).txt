@@ -1,0 +1,37 @@
+ Google Cloud Platform (GCP) does not offer Windows virtual machines under
+ its Always Free Tier, as Windows requires a paid license.
+
+ Sign up for Google Cloud Free Tier:
+  GotoGoogleCloud Console.
+  Create anewaccount if you don’t have one.
+  Activate the Free Trial
+
+ Enable Compute Engine API:
+  Navigate to Compute Engine > VM instances.
+  Ifprompted, enable the Compute Engine API.
+
+ Create a Windows VM Instance:
+  Click Create Instance.
+  ChooseaFree-tier-eligible region (e.g., us-west1, us-east1).
+  UnderMachine Configuration:
+  Series: Choose E2.
+  MachineType: e2-micro 
+
+ Under Boot Disk:
+  Click Change.
+  Select Windows Server (any version).
+  Choosethesmallest available disk size (e.g., 50 GB).
+
+ Under Firewall:
+ Select Allow HTTP and Allow RDP for remote access.
+ Create and Start the VM:
+ Click Create.
+ After the instance is created, go to VM Instances and click Start.
+
+ Access the Windows VM:
+  Click on your VM name.
+  Click Set Windows Password to generate a password.
+  UseRDP(RemoteDesktop Protocol) to connect:
+  OpenRemoteDesktop Connection on your local PC.
+  Enter the External IP of your VM.
+  Usethegenerated username & password
