@@ -1,0 +1,22 @@
+ 2. Create a Cloud Storage Bucket:
+
+ Abucket is a container for storing your files. To create one:
+  GototheGoogleCloud Console
+ .
+  Navigate to "Storage" > "Browser."
+  Click "Create bucket."
+  Enter a unique name andselect a location near your users
+ or services.
+  Chooseastorage class based on your access frequency
+ needs.
+  Setaccess controls as needed.
+  Click "Create."
+
+ 3. Upload Files to the Bucket:
+ You can upload files using the GCP Console or the gsutil
+ command-line tool.
+ Using the GCP Console:
+  IntheCloud Console, go to "Storage" > "Browser."
+  Click on your bucket's name.
+ Click "Upload files" and select the files to upload.
+  Click "Open" to start the upload
