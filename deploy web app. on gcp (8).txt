@@ -1,0 +1,84 @@
+ Step-by-Step Guide to Deploy a Web Application on
+ GCP Free Tier
+
+ Step 1: Create a Google Cloud Account
+ If you haven’t signed up for GCP:
+ 1. Go to https://cloud.google.com
+ .
+ 2. Sign up for a new account and get $300 free credits.
+ 3. Set up a billing account (you won’t be charged if you stay
+ within the free tier).
+ 4. Create a new project:
+ 1. Open GCP Console → Click Select a Project → New
+ Project.
+ 2. Name your project (e.g., "My Web App").
+ 3. Click Create.
+
+ Step 2: Set Up a Compute Engine Virtual
+ Machine
+ 1. Navigate to Compute Engine
+  OpenGCPConsole.
+  GotoCompute Engine → VM Instances.
+  Click "Create Instance".
+
+ 2. Configure the Instance
+  Name:web-server
+  Region: us-west1 (or any free-tier eligible region).
+  Machine Type: e2-micro (free tier eligible).
+
+Boot Disk:
+  Click Change → Choose Ubuntu 20.04 LTS.
+  Click Select.
+ Firewall:
+  CheckAllow HTTP traffic.
+  CheckAllow HTTPS traffic.
+  Click Create.
+
+ Step 3: Connect to the VM and Install Apache
+ Web Server
+ 1. SSH into the VM
+  Oncetheinstance is running, click SSH to open a terminal.
+
+ 2. Update & Install Apache
+  Runthefollowing commands:
+sudo apt update
+sudo apt install apache2 -
+
+ 3. Start and Enable Apache
+sudo systemctl start apache2
+
+sudo systemctl enable apache2
+
+4. Verify Apache is Running
+  Openabrowser
+http://[YOUR_VM_EXTERNAL_IP]
+
+You should see the Apache default welcome page.
+
+ Step 4: Deploy a Simple Web Page
+ 1. Replace Default Web Page
+  Runthefollowing
+
+echo '<h1>Welcome to My GCP Website!</h1> | sudo tee
+
+/var/www/html/index.html
+
+2. Restart Apache
+
+
+sudo systemctl restart apache2
+
+3. Verify the Website
+
+Open your VM's external IP address in a browser:
+
+cpp
+
+http://[YOUR_VM_EXTERNAL_IP]
+
+You should see:
+
+CSS
+
+Welcome to My GCP Website!
+

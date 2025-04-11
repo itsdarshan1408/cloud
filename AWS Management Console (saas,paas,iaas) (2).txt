@@ -1,0 +1,45 @@
+Access the AWS Management Console
+
+ SaaS on AWS
+ Example Service: Amazon WorkSpaces (Virtual Desktops)
+ 1. GototheAWSManagementConsole andsearch for Amazon WorkSpaces.
+ 2. Click on Launch WorkSpaces.
+ 3. Select the WorkSpace bundle:
+ 1. Standard (Windows or Linux).
+ 2. Choosethedesired configuration (CPU, memory, storage).
+ 4. Provide user details for WorkSpaces access.
+ 5. LaunchtheWorkSpace andaccess it via the AWS-provided client application.
+ 6. UseCase:Avirtual desktop as a service is a classic SaaS example.
+
+
+ PaaS on AWS
+ Example Service: AWS Elastic Beanstalk
+ 1. IntheAWSManagementConsole, search for Elastic Beanstalk.
+ 2. Click on Create Application.
+ 3. Provide the following details:
+ 1. Application Name: e.g., "MyApp".
+ 2. Platform: Choose a development platform (e.g., Python, Node.js, Java).
+ 4. Uploadyour application code as a ZIP file.
+ 5. Select a deployment configuration (default is usually sufficient for beginners).
+ 6. Click Create Application, and Elastic Beanstalk will handle the deployment.
+ 7. Access yourdeployed application via the URL provided.
+ 8. UseCase:Simplifies application deployment without managing infrastructure.
+
+
+IaaS on AWS
+ Example Service: Amazon EC2 (Elastic Compute Cloud)
+ 1. IntheAWSManagementConsole, search for EC2.
+ 2. Click on Launch Instance.
+ 3. Choosethefollowing:
+ 1. AMI(AmazonMachineImage): Select an OS (e.g., Ubuntu, Windows Server).
+ 2. Instance Type: Select the required configuration (e.g., t2.micro for free tier).
+ 4. Configure instance details (number of instances, network settings).
+ 5. Addstorage if required.
+ 6. Review andlaunchthe instance.
+ 7. KeyPair: Download thekey pair for SSH access (for Linux instances).
+ 8. UseSSH(Linux) or RDP (Windows) to connect to your instance.
+ 9. UseCase:Provides complete control over virtualized servers and networks.
+
+ Step 3: Manage Resources
+  UsetheAWSManagementConsoletomonitor andmanage theresources created.
+  Ensuretostoporterminate unused resources to avoid incurring unnecessary charges

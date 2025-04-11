@@ -1,0 +1,43 @@
+Sign Up for a Free AWSAccount
+   GototheAWSFreeTier page .
+  Click "Create a Free Account."
+  Sign in with your email and complete the account creation
+ process, including payment details for identity verification.
+ Note: You won’t be charged unless you exceed the free
+ tie
+
+ 2. Set Up an S3 Bucket
+
+ Amazon S3 (Simple Storage Service) is used to store files.
+ Steps to Create a Bucket:
+ 1. Log in to the AWS Management Console
+ .
+ 2. Search for "S3" in the services search bar.
+ 3. Click "Create Bucket."
+ 4. Fill in the following details:
+ o BucketName:Enter a globally unique name.
+ o AWSRegion:Select a region close to your users or
+ services.
+ o Block Public Access: Leave default settings for
+ private access.
+ 5. Click "Create Bucket."
+
+ 3. Upload Files to the Bucket
+ You can upload files through the AWS Management Console or
+ the AWSCLI.
+ Using the AWSManagement Console:
+1. Navigate to your bucket in the S3 service.
+ 2. Click "Upload."
+ 3. Drag and drop or select files larger than 10 MB to upload.
+ 4. Review the upload options and click "Upload."
+
+ 4. Verify Uploaded Files
+  IntheAWSManagementConsole, navigate to your S3
+ bucket.
+  Confirm the files are present with the correct size.
+
+ 5. (Optional) Set Object Access Permissions
+ If you want to share the files:
+ 1. Select the file in the S3 console.
+ 2. Click "Actions" > "Make Public."
+ 3. Use the generated file URL to share

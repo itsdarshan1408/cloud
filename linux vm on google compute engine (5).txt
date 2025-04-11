@@ -1,0 +1,34 @@
+ 1. Sign in to Google Cloud Console
+
+ 1. GotoGoogleCloud Console.
+ 2. Ifyoudon’t have an account, sign up and activate the Free Tier.
+ 3. MakesureComputeEngine API is enabled.
+ 2. Create a Linux Virtual Machine
+ 1. Navigate to ComputeEngine → VM Instances.
+
+ 2. Click "Create Instance".
+ Configure the Instance
+  Name:Chooseaname(e.g., linux-vm)./ Debian
+  Region:Select a free-tier eligible region: us-west1
+
+ Machine Type:
+ o Series: E2
+ o Machinetype:e2-micro(AlwaysFree Tier eligible)
+
+  BootDisk:
+ o Click Change→ChooseUbuntu/Debian/CentOS (default is Debian).
+ o Keepthedefault 10GB Standard Persistent Disk (to stay free).
+
+ Networking & Firewall
+  Firewall rules: Check ✅ "Allow HTTP traffic" and "Allow HTTPS traffic" (if needed).
+
+ Create and Start the VM:Click Create.
+ After the instance is created, go to VM Instances and click Start.
+
+ Access the Windows VM:
+  Click on your VM name.
+  Click Set Windows Password to generate a password.
+  UseRDP(RemoteDesktop Protocol) to connect:
+  OpenRemoteDesktop Connection on your local PC.
+  Enter the External IP of your VM.
+ 1. Use the generated username & password

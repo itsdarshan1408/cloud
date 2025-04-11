@@ -1,0 +1,76 @@
+Local Implementation Using VM Software
+
+ Install Virtualization Software:
+ 1. Download and install virtualization software like VirtualBox or VMware
+ Workstation Player.
+ Enable Virtualization in BIOS:
+ 1. Restart your system and access the BIOS/UEFI firmware.
+ 2. Enable Intel VT-x (for Intel processors) or AMD-V (for AMD processors).
+ Download an OS Image:
+ 1. Obtain an ISO image of the desired OS (e.g., Ubuntu, CentOS, or Windows).
+ 2. For Linux: Download from Ubuntu
+ or CentOS.
+ 3. For Windows: Obtain from Microsoft.
+
+ Create a Virtual Machine:
+ 1. Open VirtualBox/VMware.
+ 2. Click New and configure:
+ 1. Name: e.g., "Para-VM".
+ 2. OSType: Linux/Windows.
+ 3. RAM:Allocate at least 2 GB.
+ 4. Storage: Create a virtual hard disk (e.g., 20 GB dynamically
+ allocated).
+
+ Attach the ISO Image:
+ 1. In VMsettings, go to the Storage tab.
+ 2. Attach the ISO image as the optical drive.
+ Start the Virtual Machine:
+ 1. Boot the VM and follow the installation instructions of the OS.
+ Install Para-Virtualization Tools (optional):
+ 1. Install drivers like VirtIO for better integration and performance (especially if
+ using KVM).
+
+Steps to Perform on GCP
+ Log in to Google Cloud:
+ 1. Goto the Google Cloud Console.
+ 2. Log in with your Google account.
+
+ Create a Virtual Machine:
+ 1. Navigate to Compute Engine > VM Instances.
+ 2. Click Create Instance.
+
+ Configure the VM:
+ 1. Name: e.g., "Para-VM".
+ 2. Machine Type: Choose e2-micro for free tier or larger as needed.
+ 3. Boot Disk: Select the desired OS image (e.g., Debian, Ubuntu).
+ 4. Advanced Options: Check the CPU Platform to ensure compatibility with
+ para-virtualization.
+
+ Firewall and Networking:
+ 1. Allow HTTP and HTTPS traffic if needed.
+ Create and Start the Instance:
+ 1. Click Create to start the VM.
+ 2. Oncedeployed, use the SSH button in the GCP console to connect.
+ Steps to Perform on AWS
+
+Log in to AWS:
+ 1. Goto the AWSManagement Console
+ .
+ 2. Log in with your credentials.
+ Launch an EC2 Instance:
+ 1. Navigate to the EC2 Dashboard.
+ 2. Click Launch Instance.
+
+ Select AMI:
+ 1. Choose an AMI with para-virtualization support (e.g., Amazon Linux 2,
+ Ubuntu).
+ Select Instance Type:
+ 1. Choose a t2.micro (free tier eligible) or larger instance based on your
+ requirements.
+ Configure Instance Details:
+ 1. In the Advanced Details section, verify the virtualization type (should be set
+ to paravirtual if applicable).
+ 2. Configure network, storage, and security settings.
+ Launch the Instance:
+ 1. Review the settings and click Launch.
+ 2. Usean existing key pair or create a new one for SSH access

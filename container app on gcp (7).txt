@@ -1,0 +1,169 @@
+Step 1: Enable Required APIs
+
+Before using Google Cloud services, we need to enable necessary APIs.
+
+Run:
+
+gcloud services enable
+
+compute.googleapis.com
+
+containerregistry.googleapis.com
+
+What This Does:
+
+compute.googleapis.com
+
+Enables Google Compute Engine to run our container.
+
+• containerregistry.googleapis.com→
+
+Allows us to store and retrieve Docker images.
+
+Step 2: Create a Simple Flask App
+
+We will develop a Flask web application that runs inside a container.
+
+2.1 Create a project directory
+
+mkdir gcp-container-app && cd gcp-container-app
+
+2.2 Create the main application file
+
+Create app.py:
+
+from flask import Flask
+
+app =Flask(_name_)
+
+@app.route('/')
+
+def hello_world():
+
+return "Hello from Google Compute Engine!"
+
+if_name_= '_main_':
+
+app.run(host='0.0.0.0', port-8080)
+
+2.3 Create requirements.txt
+
+Flask
+
+This file lists the dependencies needed to run the app. Flask will be installed in the container.
+
+Step 3: Create a Dockerfile
+
+A Dockerfile is used to define the environment in which the application runs.
+
+Use the official Python image
+
+FROM python:3.9
+
+Set working directory inside the container
+
+MORKDIR /app
+
+Copy dependency file
+
+COPY requirements.txt.
+
+RUN pip install -r requirements.txt
+
+#Copy the app code
+COPY ..
+
+# Expose port
+
+EXPOSE 8080
+
+#Start the Flask app CMD ["python", "app.py"]
+
+Step 4: Build and Tag the Docker Image
+
+Now, we need to build our container.
+
+Run:
+
+sh
+
+docker build -t gcp-container-app
+
+Explanation:
+
+• This command builds the container image using the Dockerfile.
+
+• The -t gcp-container-app tags the image for easier reference.
+
+Step 5: Push Docker Image to Google Container Registry (GCR)
+
+Google Container Registry stores Docker images, allowing us to deploy them easily.
+
+5.1 Authenticate Docker with GCR
+
+gcloud auth configure-docker
+
+5.2 Tag the image for GCR
+
+docker tag gcp-container-app gcr.io/5(gcloud config get-value project)/gcp-container-app
+
+$(gcloud config get-value project) automatically retrieves the GCP project ID.
+
+The image is now named:
+
+gcr.io/YOUR PROJECT_ID/gcp-container-app
+
+5.3 Push the image to GCR
+
+sh
+
+docker push gcr.io/$(gcloud config get-value project)/gcp-container-app
+
+This uploads our container to Google Container Registry.
+
+Step 6: Deploy on Google Compute Engine
+
+Now, we deploy our container directly on Google Compute Engine.
+
+6.1 Create a Compute Engine instance
+
+gcloud compute instances create-with-container gcp-container-instance \
+
+--container-image-gcr.io/$(gcloud config get-value project)/gcp-container-app
+
+--tags-http-server \
+
+-machine-type-e2-micro \
+
+-zone-us-centrali-a
+
+Step 7: Allow HTTP Traffic
+
+By default, Google Compute Engine blocks HTTP traffic. We must allow it.
+
+Run:
+
+
+gcloud compute firewall-rules create allow-http\
+
+--allow-tcp:8080\
+
+--target-tags-http-server
+
+Step 8: Get Public IP and Test
+
+Now, retrieve the external IP of the instance.
+
+Run:
+
+gcloud compute instances list
+
+Find the EXTERNAL_IP column and open:
+
+http://EXTERNAL_IP:8080
+
+Step 9: Clean Up
+
+To avoid billing, delete the instance:
+
+gcloud compute instances delete gcp-container-instance-zone-us-centrali-a

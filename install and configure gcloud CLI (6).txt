@@ -1,0 +1,130 @@
+1. Setup Google Cloud Platform (GCP)
+ Create a GCP Account (if not already created)
+ 1. Go to Google Cloud Console
+ 2. Sign in and activate your Free Tier ($300 free credits for new users).
+ Enable Required APIs
+ 1. Open Google Cloud Console and navigate to APIs & Services > Library.
+ 2. Enable the following APIs:
+ 1. Cloud Build API
+ 2. Artifact Registry API
+ 3. Compute Engine API
+ 4. Cloud Run API 
+ Install and Configure gcloud CLI 
+ 1. Install gcloud SDK: Installation Guide
+gcloud auth login
+
+Set your GCP Project:
+
+gcloud config set project YOUR PROJECT_ID
+
+2. Create and Push a Docker Application to
+ GitHub
+ Create a Simple Flask (Python) Application
+
+• Create a project directory:
+
+mkdir gcp-docker-app && cd gcp-docker-app
+
+Create app.py:
+
+from flask import Flask
+
+app =Flask(_name_)
+
+@app.route('/')
+
+def home():
+
+return "Hello, GCP with Docker!"
+if_name_ == 'main_':
+
+app.run(host='0.0.0.0', port=8088)
+
+Create a requirements.txt file:
+
+flask
+
+gunicorn
+
+Create a Dockerfile
+Create a Dockerfile in the project directory:
+# Use official Python image
+
+FROM python:3.9-slim
+
+#Set the working directory
+
+WORKDIR /app
+
+# Copy the project files
+
+COPY . /app
+
+#Install dependencies
+
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Expose the port
+
+EXPOSE 8080
+
+# Command to run the application
+
+CMD ["gunicorn", "-b", "0.0.0.0:8080", "app:app"]
+
+3. Build and Push Docker Image to GCP Artifact Registry
+
+1. Enable Artifact Registry
+
+gcloud services enable artifactregistry.googleapis.com
+
+2. Create a Docker Repository
+
+gcloud artifacts repositories create my-docker-repo\
+
+--repository-format-Docker\ 
+
+--location-us-central1
+
+3. Authenticate Docker with GCP 
+gcloud auth configure-docker us-central1-docker.pkg.dev
+
+4. Build and Tag Docker Image
+
+docker build -t us-central1-docker.pkg.dev/YOUR_PROJECT_ID/my-docker-repo/gcp-docker-app:
+
+5. Push Image to Artifact Registry
+docker push us-centrall-docker.pkg.dev/YOUR_PROJECT_ID/my-docker-repo/gcp-docker-app:latest
+
+4.  Deploy Docker Application on GCP
+
+Option 1: Deploy on Cloud Run (Fully Managed, Free Tier Eligible)
+
+gcloud run deploy gcp-docker-app\
+
+--image-us-central1-docker.pkg.dev/YOUR_PROJECT_ID/my-docker-repo/gcp-docker-app:latest\
+
+--platform-managed \
+
+--region-us-central1 \
+
+--allow-unauthenticated
+
+5. Test Your Application
+
+  Ifdeployed onCloud Run,visit the provided Cloud Run URL.
+  Ifdeployed onVM,visit http://VM_EXTERNAL_IP:8080
+
+6. Clean Up Resources (To Avoid Charges)
+
+Delete Cloud Run Service:
+
+gcloud run services delete gcp-docker-app --region-us-central1
+
+Delete VM:
+
+gcloud compute instances delete gcp-docker-vm --zone-us-centrals-a
+
+Delete Docker Image:
+
+gcloud artifacts repositories delete my-docker-repo --location-us-central1
